@@ -5,12 +5,12 @@ body {
     color: #222;
 }
 
-/* HEADER */
 header {
     background: linear-gradient(90deg, #00c0ff, #00e0ff);
     padding: 20px;
     text-align: center;
     color: white;
+    position: relative;
 }
 
 .logo {
@@ -28,22 +28,11 @@ header {
     opacity: 0.9;
 }
 
-/* HERO */
 .hero {
     text-align: center;
-    padding: 60px 20px;
+    padding: 50px 20px;
 }
 
-.hero h1 {
-    font-size: 32px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: #555;
-}
-
-/* FORM */
 .booking {
     background: white;
     max-width: 400px;
@@ -52,10 +41,6 @@ header {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
-}
-
-.booking h2 {
-    margin-bottom: 15px;
 }
 
 .booking input {
@@ -83,11 +68,42 @@ header {
     background: #0099cc;
 }
 
-/* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
     margin-top: 40px;
-    color: #666;
-    background: linear-gradient(90deg, #00c0ff, #00e0ff);
+    color: #fff;
+    background: linear-gradient(90deg, #00c0ff, #0099cc);
+}
+
+.R1{
+    width: 62px;
+    height: 62px;
+    position: absolute;
+    right: 205px;
+    top: 46px;
+}
+
+.R2{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    right: 100px;
+    top: 42px;
+}
+
+.R3{
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    right: 0px;
+    top: 45px;
+}
+
+.R4{
+    position: absolute;
+    right: 10px;
+    top: -10px;
+    color: white;
+    text-shadow: -1px 1px 1px black;
 }
