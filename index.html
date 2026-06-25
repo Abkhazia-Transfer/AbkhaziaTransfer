@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Абхазия Трансфер</title>
+<link rel="icon" href="abkhaziatransfer.png">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Абхазия Трансфер</div>
+    <div class="sub">Индивидуальный трансфер и экскурсии</div>
+    <div class="sub2">Минивэн 7 мест • Комфорт • Безопасно</div>
+   <img rel="icon" src="abkhazia_transfer.png" class="img2">
+</header>
+
+<section class="hero">
+    <h1>Закажи трансфер</h1>
+    <p>Быстро • Надёжно • Комфортно</p>
+</section>
+
+<section class="booking">
+    <h2>Заявка</h2>
+
+    <form id="bookingForm">
+        <input type="text" id="name" placeholder="Ваше имя" required>
+        
+        <!-- ОТДЕЛЬНО ТЕЛЕФОН -->
+        <input type="tel" id="phone" placeholder="Телефон" required>
+
+        <!-- ОТДЕЛЬНО EMAIL -->
+        <input type="email" id="email" placeholder="Email (необязательно)">
+
+        <input type="date" id="date" required>
+
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+
+<link rel="stylesheet" type="text/css" href="">
+
+<footer>
+    © 2026 Абхазия Трансфер. Все права защищены.
+</footer>
+
+<script>
+const BOT_TOKEN = 
+"8793796334:AAHPpKq4ZXK0Rxo6AzqVwQtfN6RVyqHnK5U";
+const CHAT_ID = "-1004349999011";
+
+// запрет прошлых дат
+document.addEventListener("DOMContentLoaded", function () {
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("date").setAttribute("min", today);
+});
+
+document.getElementById("bookingForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const date = document.getElementById("date").value;
+
+    if (!name || !phone || !date) {
+        alert("Заполните имя, телефон и дату");
+        return;
+    }
+
+    const text = `🚐 Новая заявка
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+📧 Email: ${email ? email : "не указан"}
+📅 Дата: ${date}`;
+
+    try {
+        const formData = new FormData();
+        formData.append("chat_id", CHAT_ID);
+        formData.append("text", text);
+
+        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.ok) {
+            alert("Ваша заявка отправлена!");
+            document.getElementById("bookingForm").reset();
+        } else {
+            alert("Ошибка: " + data.description);
+        }
+
+    } catch (err) {
+        console.log(err);
+        alert("Ошибка сети");
+    }
+});
+</script>
+
+</body>
+</html> 
