@@ -76,34 +76,7 @@ footer {
     background: linear-gradient(90deg, #00c0ff, #0099cc);
 }
 
-.R1{
-    width: 62px;
-    height: 62px;
-    position: absolute;
-    right: 205px;
-    top: 46px;
-}
-
-.R2{
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    right: 100px;
-    top: 42px;
-}
-
-.R3{
-    width: 68px;
-    height: 68px;
-    position: absolute;
-    right: 0px;
-    top: 45px;
-}
-
-.R4{
-    position: absolute;
-    right: 10px;
-    top: -10px;
-    color: white;
-    text-shadow: -1px 1px 1px black;
+.img2{
+    width: 80px;
+    height: 80px;
 }
