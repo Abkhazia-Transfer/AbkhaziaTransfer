@@ -1,100 +1,84 @@
-/* ОБЩИЙ СБРОС */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #e9f9ff;
+    color: #222;
 }
 
-html, body{
-    width:100%;
-    overflow-x:hidden;
-    font-family:Arial, sans-serif;
-    background:#e9f9ff;
-    color:#222;
+header {
+    background: linear-gradient(90deg, #00c0ff, #00e0ff);
+    padding: 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+    padding: 0;
+    margin: 0;
 }
 
-/* HEADER */
-header{
-    width:100%;
-    background:linear-gradient(90deg,#00c0ff,#00e0ff);
-    text-align:center;
-    color:white;
-    padding:20px 15px;
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.sub {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.sub2 {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.booking {
+    background: white;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.booking input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.booking button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #00c0ff;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.booking button:hover {
+    background: #0099cc;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #fff;
+    background: linear-gradient(90deg, #00c0ff, #0099cc);
 }
 
 .img2{
-    width:80px;
-    height:80px;
-    display:block;
-    margin:0 auto 10px;
-}
-
-.logo{
-    font-size:26px;
-    font-weight:bold;
-}
-
-.sub{
-    font-size:16px;
-    margin-top:5px;
-}
-
-.sub2{
-    font-size:14px;
-    opacity:0.9;
-}
-
-/* HERO */
-.hero{
-    width:100%;
-    text-align:center;
-    padding:40px 15px;
-}
-
-/* ФОРМА */
-.booking{
-    width:92%;
-    max-width:400px;
-    margin:0 auto;
-    background:#fff;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    text-align:center;
-}
-
-.booking input{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
-}
-
-/* КНОПКА */
-.booking button{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border:none;
-    border-radius:10px;
-    background:#00c0ff;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-}
-
-.booking button:hover{
-    background:#0099cc;
-}
-
-/* FOOTER */
-footer{
-    width:100%;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-    color:white;
-    background:linear-gradient(90deg,#00c0ff,#0099cc);
+    width: 80px;
+    height: 80px;
 }
