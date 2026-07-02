@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Абхазия Трансфер</title>
+
 <meta name="theme-color" content="#00c0ff">
+
 <link rel="icon" href="abkhaziatransfer.png">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -18,22 +20,15 @@
 
 <div class="logo">Абхазия Трансфер</div>
 
-<div class="sub">
-Индивидуальный трансфер и экскурсии
-</div>
+<div class="sub">Индивидуальный трансфер и экскурсии</div>
 
-<div class="sub2">
-Минивэн 7 мест • Комфорт • Безопасно
-</div>
+<div class="sub2">Минивэн 7 мест • Комфорт • Безопасно</div>
 
 </header>
 
 <section class="hero">
-
 <h1>Закажите трансфер</h1>
-
 <p>Быстро • Надёжно • Комфортно</p>
-
 </section>
 
 <section class="booking">
@@ -42,130 +37,88 @@
 
 <form id="bookingForm">
 
-<input
-type="text"
-id="name"
-placeholder="Ваше имя"
-required>
+<input type="text" id="name" placeholder="Ваше имя" required>
 
-<input
-type="tel"
-id="phone"
-placeholder="Телефон"
-required>
+<input type="tel" id="phone" placeholder="Телефон" required>
 
-<input
-type="email"
-id="email"
-placeholder="Email (необязательно)">
+<input type="email" id="email" placeholder="Email (необязательно)">
 
-<label for="date" class="date-label">
-Дата поездки
-</label>
+<label for="date" class="date-label">Дата поездки</label>
 
 <input type="date" id="date" required>
 
-<small class="date-hint">
-Нажмите на поле и выберите дату
-</small>
+<small class="date-hint">Нажмите на поле и выберите дату</small>
 
-<button type="submit">
-Отправить заявку
-</button>
+<button type="submit">Отправить заявку</button>
 
 </form>
 
 </section>
 
 <footer>
-
 © 2026 Абхазия Трансфер. Все права защищены.
-
 </footer>
 
 <script>
 
-const BOT_TOKEN = "8793796334:AAHPpKq4ZXK0Rxo6AzqVwQtfN6RVyqHnK5U";
-
+const BOT_TOKEN = "8793796334:AAHPkQX0Rxo6AzqVwQtfN6RVyqHnK5U";
 const CHAT_ID = "-1004349999011";
 
-document.addEventListener("DOMContentLoaded", ()=>{
-
-const today = new Date().toISOString().split("T")[0];
-
-document.getElementById("date").min = today;
-
+/* запрет прошлых дат */
+document.addEventListener("DOMContentLoaded", () => {
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("date").min = today;
 });
 
 document.getElementById("bookingForm").addEventListener("submit", async function(e){
+    e.preventDefault();
 
-e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const date = document.getElementById("date").value;
 
-const name=document.getElementById("name").value.trim();
+    if(!name || !phone || !date){
+        alert("Заполните имя, телефон и дату");
+        return;
+    }
 
-const phone=document.getElementById("phone").value.trim();
-
-const email=document.getElementById("email").value.trim();
-
-const date=document.getElementById("date").value;
-
-if(!name || !phone || !date){
-
-alert("Заполните имя, телефон и дату");
-
-return;
-
-}
-
-const text=`🚐 Новая заявка
+    const text =
+`🚐 Новая заявка
 
 👤 Имя: ${name}
-
 📞 Телефон: ${phone}
-
 📧 Email: ${email || "не указан"}
-
 📅 Дата: ${date}`;
 
-const formData=new FormData();
+    try {
+        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: text
+            })
+        });
 
-formData.append("chat_id",CHAT_ID);
+        const data = await response.json();
 
-formData.append("text",text);
+        if(data.ok){
+            alert("Ваша заявка отправлена!");
+            this.reset();
+        } else {
+            alert("Ошибка: " + data.description);
+        }
 
-try{
-
-const response=await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
-
-method:"POST",
-
-body:formData
-
-});
-
-const data=await response.json();
-
-if(data.ok){
-
-alert("Ваша заявка отправлена!");
-
-this.reset();
-
-}else{
-
-alert("Ошибка: "+data.description);
-
-}
-
-}catch{
-
-alert("Ошибка сети");
-
-}
-
+    } catch (err) {
+        console.log(err);
+        alert("Ошибка сети");
+    }
 });
 
 </script>
 
 </body>
-</html>  
+</html>
